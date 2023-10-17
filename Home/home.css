@@ -1,0 +1,55 @@
+.scroll-down{
+    height: 4em;
+    width: 2em;
+    border: 2px solid #eee;
+    position: absolute;
+    left: 50%;
+    bottom: 5em;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/*ทำลูกศรมี 2 อัน ตอนแรกซ้อนกัน*/
+.scroll-down::before,
+.scroll-down::after{
+    content: '';
+    position: absolute;
+    top:20%;
+    left: 50%;
+    border: 2px solid #eee;
+    height: 10px;
+    width: 10px; 
+    transform: translate(-50%, -100%) rotate(45deg); /*ทำให้อยู่ตรงกลาง + ทำเป็น 4เหลี่ยมรูปเพ็ชร*/
+    border-top:transparent; /*เอากรอบออก*/
+    border-left:transparent; /*เอากรอบออก*/
+    animation: scroll-down 1s ease-in-out infinite; /*ease in out คือ เริ่มจากช้าแล้วเร่ง*/
+}
+
+.scroll-down::after{
+    top: 30%; /*ทำลูกศรให้แยกออกจากกัน*/
+}
+
+@keyframes scroll-down {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: 90%;
+    }
+}
+
+.slider {
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+	scrollbar-width: none; /* Firefox */
+}
+.slider::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}
